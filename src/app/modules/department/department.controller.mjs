@@ -1,8 +1,8 @@
-const { createDepartmentDb, getAllDataDb } = require("./department.service");
+import { DepartmentService } from "./department.service.mjs";
 
 const createDepartment = async (req, res) => {
   const data = req.body;
-  const result = await createDepartmentDb(data);
+  const result = await DepartmentService.createDepartmentDb(data);
   res.status(200).json({
     message: "Department created successfully",
     data: result,
@@ -10,11 +10,11 @@ const createDepartment = async (req, res) => {
 };
 
 const getAllData = async (req, res) => {
-  const result = await getAllDataDb();
+  const result = await DepartmentService.getAllDataDb();
   res.status(200).json({
     message: "Department retried successfully",
     data: result,
   });
 };
 
-module.exports = { createDepartment, getAllData };
+export const DepartmentController = { createDepartment, getAllData };

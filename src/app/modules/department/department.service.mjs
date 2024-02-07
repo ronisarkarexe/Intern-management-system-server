@@ -1,4 +1,4 @@
-const Department = require("./department.model");
+import { Department } from "./department.model.mjs";
 
 const createDepartmentDb = async (payload) => {
   const result = await Department.create(payload);
@@ -10,7 +10,7 @@ const getAllDataDb = async () => {
   return result;
 };
 
-module.exports = {
+export const DepartmentService = {
   createDepartmentDb,
-  getAllDataDb
+  getAllDataDb,
 };

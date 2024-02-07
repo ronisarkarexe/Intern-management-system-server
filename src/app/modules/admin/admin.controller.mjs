@@ -1,14 +1,8 @@
-const {
-  createAdminDb,
-  getAllDataDb,
-  getSingleDataDb,
-  updateAdminDb,
-  deleteAdminDb,
-} = require("./admin.service");
+import { AdminService } from "./admin.service.mjs";
 
 const createAdmin = async (req, res) => {
   const data = req.body;
-  const result = await createAdminDb(data);
+  const result = await AdminService.createAdminDb(data);
   res.status(200).json({
     message: "Admin created successfully",
     data: result,
@@ -16,7 +10,7 @@ const createAdmin = async (req, res) => {
 };
 
 const getAllData = async (req, res) => {
-  const result = await getAllDataDb();
+  const result = await AdminService.getAllDataDb();
   res.status(200).json({
     message: "Admin retried successfully",
     data: result,
@@ -25,7 +19,7 @@ const getAllData = async (req, res) => {
 
 const getSingleData = async (req, res) => {
   const id = req.params.id;
-  const result = await getSingleDataDb(id);
+  const result = await AdminService.getSingleDataDb(id);
   res.status(200).json({
     message: "Admin created successfully",
     data: result,
@@ -35,7 +29,7 @@ const getSingleData = async (req, res) => {
 const updateAdmin = async (req, res) => {
   const id = req.params.id;
   const data = req.body;
-  const result = await updateAdminDb(id, data);
+  const result = await AdminService.updateAdminDb(id, data);
   res.status(200).json({
     message: "Admin retried successfully",
     data: result,
@@ -44,11 +38,17 @@ const updateAdmin = async (req, res) => {
 
 const deleteAdmin = async (req, res) => {
   const id = req.params.id;
-  const result = await deleteAdminDb(id);
+  const result = await AdminService.deleteAdminDb(id);
   res.status(200).json({
     message: "Admin retried successfully",
     data: result,
   });
 };
 
-module.exports = { createAdmin, getAllData, getSingleData, updateAdmin, deleteAdmin };
+export const AdminController = {
+  createAdmin,
+  updateAdmin,
+  deleteAdmin,
+  getAllData,
+  getSingleData,
+};

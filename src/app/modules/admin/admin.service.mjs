@@ -1,11 +1,10 @@
-const Admin = require("./admin.model");
+import { Admin } from "./admin.model.mjs";
 
 const createAdminDb = async (data) => {
   const existingAdmin = await Admin.findOne({
-    email: data.email,
-    departmentId: data.departmentId,
+    departmentId: { _id: data.departmentId },
   });
-  console.log(existingAdmin)
+
   if (existingAdmin) {
     throw new Error(
       "An admin with this email already exists in the specified department."
@@ -35,7 +34,7 @@ const deleteAdminDb = async (id) => {
   return result;
 };
 
-module.exports = {
+export const AdminService = {
   createAdminDb,
   getAllDataDb,
   getSingleDataDb,
