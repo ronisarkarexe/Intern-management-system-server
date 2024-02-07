@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const adminSchema = new mongoose.Schema({
   name: {
@@ -8,15 +8,17 @@ const adminSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
+    unique: true,
   },
   password: {
     type: String,
     required: true,
   },
-  department: {
-    type: String,
+  departmentId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Department",
     required: true,
   },
 });
 
-module.exports = mongoose.model("Admin", adminSchema);
+export const Admin = mongoose.model("Admin", adminSchema);
