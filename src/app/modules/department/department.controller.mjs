@@ -17,4 +17,16 @@ const getAllData = async (req, res) => {
   });
 };
 
-export const DepartmentController = { createDepartment, getAllData };
+const deleteDepartment = async (req, res) => {
+  const { id } = req.params;
+  await DepartmentService.deleteDepartment(id);
+  res.status(200).json({
+    message: "Department deleted successfully"
+  });
+};
+
+export const DepartmentController = {
+  createDepartment,
+  getAllData,
+  deleteDepartment,
+};
