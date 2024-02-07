@@ -10,4 +10,25 @@ const getAllDataDb = async () => {
   return result;
 };
 
-module.exports = { createAdminDb, getAllDataDb };
+const getSingleDataDb = async (id) => {
+  const result = await Admin.findOne({ _id: id });
+  return result;
+};
+
+const updateAdminDb = async (id) => {
+  const result = await Admin.updateOne({ _id: id });
+  return result;
+};
+
+const deleteAdminDb = async (id) => {
+  const result = await Admin.deleteOne({ _id: id });
+  return result;
+};
+
+module.exports = {
+  createAdminDb,
+  getAllDataDb,
+  getSingleDataDb,
+  updateAdminDb,
+  deleteAdminDb,
+};
