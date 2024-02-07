@@ -3,6 +3,7 @@ const router = express.Router();
 
 const AdminRouter = require("../modules/admin/admin.router");
 const InternRouter = require("../modules/intern/intern.router");
+const DepartmentRouters = require("../modules/department/department.router");
 
 const routerModule = [
   {
@@ -12,6 +13,10 @@ const routerModule = [
   {
     path: "/intern",
     route: InternRouter,
+  },
+  {
+    path: "/department",
+    route: DepartmentRouters,
   },
 ];
 

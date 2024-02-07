@@ -1,12 +1,22 @@
 const Admin = require("./admin.model");
 
 const createAdminDb = async (data) => {
+  const existingAdmin = await Admin.findOne({
+    email: data.email,
+    departmentId: data.departmentId,
+  });
+  console.log(existingAdmin)
+  if (existingAdmin) {
+    throw new Error(
+      "An admin with this email already exists in the specified department."
+    );
+  }
   const result = await Admin.create(data);
   return result;
 };
 
 const getAllDataDb = async () => {
-  const result = await Admin.find({});
+  const result = await Admin.find({}).populate("departmentId");
   return result;
 };
 
