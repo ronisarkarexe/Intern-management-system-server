@@ -10,6 +10,7 @@ const getAllDataDb = async () => {
   return result;
 };
 
+
 export const DepartmentService = {
   createDepartmentDb,
   getAllDataDb,
