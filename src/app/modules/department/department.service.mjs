@@ -10,8 +10,12 @@ const getAllDataDb = async () => {
   return result;
 };
 
+const deleteDepartment = async (id) => {
+  await Department.deleteOne({ _id: id });
+};
 
 export const DepartmentService = {
   createDepartmentDb,
   getAllDataDb,
+  deleteDepartment,
 };
