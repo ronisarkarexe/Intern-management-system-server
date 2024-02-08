@@ -1,16 +1,39 @@
+import mongoose from "mongoose";
 import { Admin } from "./admin.model.mjs";
+import { Department } from "../department/department.model.mjs";
 
-const createAdminDb = async (data) => {
-  const existingAdmin = await Admin.findOne({
-    departmentId: { _id: data.departmentId },
-  });
+const createAdminDb = async (payload) => {
+  let result = null;
+  const session = await mongoose.startSession();
+  try {
+    session.startTransaction();
+    const existingAdmin = await Admin.findOne({
+      departmentId: { _id: payload.departmentId },
+    });
 
-  if (existingAdmin) {
-    throw new Error(
-      "An admin with this email already exists in the specified department."
-    );
+    if (existingAdmin) {
+      throw new Error(
+        "An admin with this email already exists in the specified department."
+      );
+    }
+
+    const department = await Department.findOne({ _id: payload.departmentId });
+    if (!department) {
+      throw new Error("Department is not found!");
+    }
+    result = await Admin.create(payload);
+    department.adminDetails.push({ adminId: result._id });
+    await department.save();
+    await session.commitTransaction();
+    await session.endSession();
+  } catch (error) {
+    await session.commitTransaction();
+    await session.endSession();
   }
-  const result = await Admin.create(data);
+
+  if (!result) {
+    throw new Error("Admin is not created!");
+  }
   return result;
 };
 
