@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
-import { Admin } from "./admin.model.mjs";
-import { Department } from "../department/department.model.mjs";
+import mongoose from 'mongoose';
+import { Admin } from './admin.model.mjs';
+import { Department } from '../department/department.model.mjs';
 
 const createAdminDb = async (payload) => {
   let result = null;
@@ -13,13 +13,13 @@ const createAdminDb = async (payload) => {
 
     if (existingAdmin) {
       throw new Error(
-        "An admin with this email already exists in the specified department."
+        'An admin with this email already exists in the specified department.',
       );
     }
 
     const department = await Department.findOne({ _id: payload.departmentId });
     if (!department) {
-      throw new Error("Department is not found!");
+      throw new Error('Department is not found!');
     }
     result = await Admin.create(payload);
     department.adminDetails.push({ adminId: result._id });
@@ -32,13 +32,13 @@ const createAdminDb = async (payload) => {
   }
 
   if (!result) {
-    throw new Error("Admin is not created!");
+    throw new Error('Admin is not created!');
   }
   return result;
 };
 
 const getAllDataDb = async () => {
-  const result = await Admin.find({}).populate("departmentId");
+  const result = await Admin.find({}).populate('departmentId');
   return result;
 };
 

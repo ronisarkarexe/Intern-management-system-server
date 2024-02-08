@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const departmentSchema = new mongoose.Schema(
   {
@@ -11,7 +11,7 @@ const departmentSchema = new mongoose.Schema(
       {
         internId: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: "Intern",
+          ref: 'Intern',
         },
       },
     ],
@@ -19,14 +19,14 @@ const departmentSchema = new mongoose.Schema(
       {
         adminId: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: "Admin",
+          ref: 'Admin',
         },
       },
     ],
   },
   {
     timestamps: true,
-  }
+  },
 );
 
-export const Department = mongoose.model("Department", departmentSchema);
+export const Department = mongoose.model('Department', departmentSchema);

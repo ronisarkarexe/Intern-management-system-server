@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const adminSchema = new mongoose.Schema(
   {
@@ -17,13 +17,13 @@ const adminSchema = new mongoose.Schema(
     },
     departmentId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Department",
+      ref: 'Department',
       required: true,
     },
   },
   {
     timestamps: true,
-  }
+  },
 );
 
-export const Admin = mongoose.model("Admin", adminSchema);
+export const Admin = mongoose.model('Admin', adminSchema);
