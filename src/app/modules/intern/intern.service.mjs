@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
-import { Department } from "../department/department.model.mjs";
-import { Intern } from "./intern.module.mjs";
+import mongoose from 'mongoose';
+import { Department } from '../department/department.model.mjs';
+import { Intern } from './intern.module.mjs';
 
 const createIntern = async (payload) => {
   let result = null;
@@ -19,18 +19,18 @@ const createIntern = async (payload) => {
     await session.endSession();
   }
   if (!result) {
-    throw new Error("Intern is not created!");
+    throw new Error('Intern is not created!');
   }
   return result;
 };
 
 const getAllIntern = async () => {
-  const result = await Intern.find().populate("departmentId");
+  const result = await Intern.find().populate('departmentId');
   return result;
 };
 
 const getSingleIntern = async (id) => {
-  const result = await Intern.findOne({ _id: id }).populate("departmentId");
+  const result = await Intern.findOne({ _id: id }).populate('departmentId');
   return result;
 };
 
