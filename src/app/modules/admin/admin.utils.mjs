@@ -1,3 +1,1 @@
-const isDepartmentExist = () => {
-    
-}
+const isDepartmentExist = () => {};

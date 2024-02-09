@@ -1,4 +1,4 @@
-import { Department } from "./department.model.mjs";
+import { Department } from './department.model.mjs';
 
 const createDepartmentDb = async (payload) => {
   const result = await Department.create(payload);
