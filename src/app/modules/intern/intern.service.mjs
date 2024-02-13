@@ -1,6 +1,9 @@
 import mongoose from 'mongoose';
 import { Department } from '../department/department.model.mjs';
 import { Intern } from './intern.module.mjs';
+import paginationHelper from '../../../utils/paginationHelper.mjs';
+import bcrypt from 'bcrypt';
+import config from '../../../config/index.mjs';
 
 const createIntern = async (payload) => {
   let result = null;
@@ -8,6 +11,10 @@ const createIntern = async (payload) => {
   try {
     session.startTransaction();
     const department = await Department.findOne({ _id: payload.departmentId });
+    payload.password = await bcrypt.hash(
+      payload.password,
+      Number(config.bcrypt_salt_rounds),
+    );
     result = await Intern.create(payload);
     department.internDetails.push({ internId: result._id });
 
@@ -24,9 +31,27 @@ const createIntern = async (payload) => {
   return result;
 };
 
-const getAllIntern = async () => {
-  const result = await Intern.find().populate('departmentId');
-  return result;
+const getAllIntern = async (options) => {
+  const { page, limit, skip, sortBy, sortOrder } = paginationHelper(options);
+  const sortCondition = {};
+  if (sortBy && sortOrder) {
+    sortCondition[sortBy] = sortOrder;
+  }
+
+  const result = await Intern.find()
+    .sort(sortCondition)
+    .skip(skip)
+    .limit(limit)
+    .populate('departmentId');
+  const total = await Intern.countDocuments({});
+  return {
+    meta: {
+      page,
+      limit,
+      total,
+    },
+    data: result,
+  };
 };
 
 const getSingleIntern = async (id) => {

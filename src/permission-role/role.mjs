@@ -1,0 +1,7 @@
+const PERMISSION_ROLE = {
+  SUPER_ADMIN: 'SUPER_ADMIN',
+  ADMIN: 'ADMIN',
+  INTERN: 'INTERN',
+};
+
+export default PERMISSION_ROLE;

@@ -1,15 +1,33 @@
 import mongoose from 'mongoose';
 import { Department } from './department.model.mjs';
 import { Admin } from '../admin/admin.model.mjs';
+import paginationHelper from '../../../utils/paginationHelper.mjs';
 
 const createDepartmentDb = async (payload) => {
   const result = await Department.create(payload);
   return result;
 };
 
-const getAllDataDb = async () => {
-  const result = await Department.find({}).populate('adminDetails.adminId');
-  return result;
+const getAllDataDb = async (options) => {
+  const { page, limit, skip, sortBy, sortOrder } = paginationHelper(options);
+  const sortCondition = {};
+  if (sortBy && sortOrder) {
+    sortCondition[sortBy] = sortOrder;
+  }
+  const result = await Department.find({})
+    .sort(sortCondition)
+    .skip(skip)
+    .limit(limit)
+    .populate('adminDetails.adminId');
+  const total = await Department.countDocuments({});
+  return {
+    meta: {
+      page,
+      limit,
+      total,
+    },
+    data: result,
+  };
 };
 
 const deleteDepartment = async (id) => {

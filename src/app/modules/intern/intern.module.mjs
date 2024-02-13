@@ -10,6 +10,10 @@ const internSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    role: {
+      type: String,
+      default: 'INTERN',
+    },
     email: {
       type: String,
       required: true,

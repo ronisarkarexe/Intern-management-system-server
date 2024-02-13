@@ -2,7 +2,8 @@ import express from 'express';
 import { InternRouters } from '../modules/intern/intern.router.mjs';
 import { AdminRouters } from '../modules/admin/admin.router.mjs';
 import { DepartmentRouters } from '../modules/department/department.router.mjs';
-import { TaskRouters } from '../modules/task/task.router.mjs';
+// import { TaskRouters } from '../modules/task/task.router.mjs';
+import { AuthRouters } from '../modules/auth/auth.router.mjs';
 const router = express.Router();
 
 const routerModule = [
@@ -19,8 +20,8 @@ const routerModule = [
     route: DepartmentRouters,
   },
   {
-    path: '/task',
-    route: TaskRouters,
+    path: '/auth',
+    route: AuthRouters,
   },
 ];
 
