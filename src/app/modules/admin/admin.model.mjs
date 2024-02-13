@@ -6,6 +6,10 @@ const adminSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    role: {
+      type: String,
+      default: 'ADMIN',
+    },
     email: {
       type: String,
       required: true,
@@ -14,10 +18,11 @@ const adminSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
+      select: 0,
     },
     departmentId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Department'
+      ref: 'Department',
     },
   },
   {
