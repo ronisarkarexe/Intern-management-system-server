@@ -4,7 +4,7 @@ import PERMISSION_ROLE from '../../../permission-role/role.mjs';
 import { ProfileController } from './profile.controller.mjs';
 const router = express.Router();
 
-router.post(
+router.get(
   '/',
   auth(
     PERMISSION_ROLE.ADMIN,
