@@ -4,6 +4,7 @@ import { AdminRouters } from '../modules/admin/admin.router.mjs';
 import { DepartmentRouters } from '../modules/department/department.router.mjs';
 // import { TaskRouters } from '../modules/task/task.router.mjs';
 import { AuthRouters } from '../modules/auth/auth.router.mjs';
+import { ProfileRouters } from '../modules/profile/profile.router.mjs';
 const router = express.Router();
 
 const routerModule = [
@@ -22,6 +23,10 @@ const routerModule = [
   {
     path: '/auth',
     route: AuthRouters,
+  },
+  {
+    path: '/view-profile',
+    route: ProfileRouters,
   },
 ];
 
