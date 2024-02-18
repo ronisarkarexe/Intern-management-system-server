@@ -7,8 +7,7 @@ import { ProfileRouters } from '../modules/profile/profile.router.mjs';
 import { LeaveRouters } from '../modules/leave/leave.router.mjs';
 import { TaskRouters } from '../modules/task/task.router.mjs';
 import { CertificateRouters } from '../modules/certificate/certificate.router.mjs';
-
-
+import { EventRouters } from '../modules/event/event.router.mjs';
 
 const router = express.Router();
 const routerModule = [
@@ -43,6 +42,10 @@ const routerModule = [
   {
     path: '/certificate',
     route: CertificateRouters,
+  },
+  {
+    path: '/event',
+    route: EventRouters,
   },
 ];
 
