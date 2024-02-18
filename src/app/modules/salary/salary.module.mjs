@@ -1,27 +1,32 @@
 import mongoose from 'mongoose';
 
-const taskSchema = mongoose.Schema(
+const salarySchema = mongoose.Schema(
   {
-    taskName: {
+    amount: {
       type: String,
       required: true,
     },
-    assignDate: {
+    year: {
       type: String,
       required: true,
     },
-    deadlineDate: {
+    status: {
       type: String,
       required: true,
+      enum: ['pending', 'approved', 'rejected'],
     },
-    departmentId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Department',
+    month: {
+      type: String,
       required: true,
     },
     internId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Intern',
+      required: true,
+    },
+    departmentId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Department',
       required: true,
     },
   },
@@ -30,4 +35,4 @@ const taskSchema = mongoose.Schema(
   },
 );
 
-export const Task = mongoose.model('Task', taskSchema);
+export const Salary = mongoose.model('Salary', salarySchema);

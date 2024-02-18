@@ -1,27 +1,34 @@
 import mongoose from 'mongoose';
 
-const taskSchema = mongoose.Schema(
+const eventSchema = mongoose.Schema(
   {
-    taskName: {
+    eventName: {
       type: String,
       required: true,
     },
-    assignDate: {
+    registrationLink: {
       type: String,
       required: true,
     },
-    deadlineDate: {
+    startDate: {
       type: String,
+      required: true,
+    },
+    endDate: {
+      type: String,
+      required: true,
+    },
+    eventImage: {
+      type: String,
+    },
+    internId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Intern',
       required: true,
     },
     departmentId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Department',
-      required: true,
-    },
-    internId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Intern',
       required: true,
     },
   },
@@ -30,4 +37,4 @@ const taskSchema = mongoose.Schema(
   },
 );
 
-export const Task = mongoose.model('Task', taskSchema);
+export const Event = mongoose.model('Event', eventSchema);
