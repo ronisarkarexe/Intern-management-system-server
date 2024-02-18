@@ -2,13 +2,15 @@ import express from 'express';
 import { InternRouters } from '../modules/intern/intern.router.mjs';
 import { AdminRouters } from '../modules/admin/admin.router.mjs';
 import { DepartmentRouters } from '../modules/department/department.router.mjs';
-// import { TaskRouters } from '../modules/task/task.router.mjs';
 import { AuthRouters } from '../modules/auth/auth.router.mjs';
 import { ProfileRouters } from '../modules/profile/profile.router.mjs';
 import { LeaveRouters } from '../modules/leave/leave.router.mjs';
 import { TaskRouters } from '../modules/task/task.router.mjs';
-const router = express.Router();
+import { CertificateRouters } from '../modules/certificate/certificate.router.mjs';
 
+
+
+const router = express.Router();
 const routerModule = [
   {
     path: '/admin',
@@ -37,6 +39,10 @@ const routerModule = [
   {
     path: '/task',
     route: TaskRouters,
+  },
+  {
+    path: '/certificate',
+    route: CertificateRouters,
   },
 ];
 
