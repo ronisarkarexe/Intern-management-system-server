@@ -5,6 +5,8 @@ import { DepartmentRouters } from '../modules/department/department.router.mjs';
 // import { TaskRouters } from '../modules/task/task.router.mjs';
 import { AuthRouters } from '../modules/auth/auth.router.mjs';
 import { ProfileRouters } from '../modules/profile/profile.router.mjs';
+import { LeaveRouters } from '../modules/leave/leave.router.mjs';
+import { TaskRouters } from '../modules/task/task.router.mjs';
 const router = express.Router();
 
 const routerModule = [
@@ -27,6 +29,14 @@ const routerModule = [
   {
     path: '/view-profile',
     route: ProfileRouters,
+  },
+  {
+    path: '/intern-leave',
+    route: LeaveRouters,
+  },
+  {
+    path: '/task',
+    route: TaskRouters,
   },
 ];
 
