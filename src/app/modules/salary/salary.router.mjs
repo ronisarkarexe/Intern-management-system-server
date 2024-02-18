@@ -5,4 +5,4 @@ const router = express.Router();
 
 router.post('/', SalaryController.createSalary);
 
-export const LeaveRouters = router;
+export const SalaryRouters = router;
