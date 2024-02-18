@@ -4,8 +4,7 @@ const leaveSchema = mongoose.Schema(
   {
     reason: {
       type: String,
-      required: true,
-      unique: true,
+      required: true
     },
     startDate: {
       type: String,
