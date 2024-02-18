@@ -20,17 +20,7 @@ const eventSchema = mongoose.Schema(
     },
     eventImage: {
       type: String,
-    },
-    internId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Intern',
-      required: true,
-    },
-    departmentId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Department',
-      required: true,
-    },
+    }
   },
   {
     timestamps: true,

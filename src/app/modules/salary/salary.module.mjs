@@ -13,11 +13,25 @@ const salarySchema = mongoose.Schema(
     status: {
       type: String,
       required: true,
-      enum: ['pending', 'approved', 'rejected'],
+      enum: ['PENDING', 'ONGOING', 'DONE'],
     },
     month: {
       type: String,
       required: true,
+      enum: [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ],
     },
     internId: {
       type: mongoose.Schema.Types.ObjectId,

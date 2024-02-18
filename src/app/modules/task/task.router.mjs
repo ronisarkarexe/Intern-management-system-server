@@ -1,7 +1,8 @@
 import express from 'express';
+import { TaskController } from './task.controller.mjs';
 
 const router = express.Router();
 
-router.post('/');
+router.post('/', TaskController.createTask);
 
 export const TaskRouters = router;
