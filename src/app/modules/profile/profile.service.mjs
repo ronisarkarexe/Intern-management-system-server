@@ -11,9 +11,9 @@ const profile = async (payload) => {
     );
   }
   if (payload.role === 'INTERN') {
-    isExistUser = await Intern.findOne({ email: payload.email }).select(
-      '-password',
-    );
+    isExistUser = await Intern.findOne({ email: payload.email })
+      .select('-password')
+      .populate('departmentId');
   }
   if (!isExistUser) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Please enter valid email!');

@@ -42,7 +42,9 @@ const getAllIntern = async (options) => {
     .sort(sortCondition)
     .skip(skip)
     .limit(limit)
-    .populate('departmentId');
+    .populate('departmentId')
+    .populate('tasks.taskId')
+    .populate('salaries.salaryId');
   const total = await Intern.countDocuments({});
   return {
     meta: {
