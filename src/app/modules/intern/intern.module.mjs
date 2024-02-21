@@ -52,11 +52,31 @@ const internSchema = mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    isInternshipCompleted: {
+      type: Boolean,
+      default: false,
+    },
     departmentId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Department',
       required: true,
     },
+    tasks: [
+      {
+        taskId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Task',
+        },
+      },
+    ],
+    salaries: [
+      {
+        salaryId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Salary',
+        },
+      },
+    ],
   },
   {
     timestamps: true,
