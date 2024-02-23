@@ -8,8 +8,8 @@ router.get(
   '/',
   auth(
     PERMISSION_ROLE.ADMIN,
-    PERMISSION_ROLE.INTERN,
     PERMISSION_ROLE.SUPER_ADMIN,
+    PERMISSION_ROLE.INTERN,
   ),
   ProfileController.profile,
 );

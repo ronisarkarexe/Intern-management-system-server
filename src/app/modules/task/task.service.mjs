@@ -38,7 +38,9 @@ const getAllTask = async (options) => {
   const result = await Task.find({})
     .sort(sortCondition)
     .skip(skip)
-    .limit(limit);
+    .limit(limit)
+    .populate('internId')
+    .populate('departmentId');
   const total = await Task.countDocuments({});
   return {
     meta: {

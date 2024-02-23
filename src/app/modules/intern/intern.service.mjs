@@ -15,9 +15,10 @@ const createIntern = async (payload) => {
       payload.password,
       Number(config.bcrypt_salt_rounds),
     );
+    console.log(department);
     result = await Intern.create(payload);
     department.internDetails.push({ internId: result._id });
-
+    console.log(department);
     await department.save();
     await session.commitTransaction();
     await session.endSession();

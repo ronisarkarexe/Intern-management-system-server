@@ -19,7 +19,11 @@ router.get(
 
 router.get(
   '/:id',
-  auth(PERMISSION_ROLE.ADMIN, PERMISSION_ROLE.SUPER_ADMIN),
+  auth(
+    PERMISSION_ROLE.ADMIN,
+    PERMISSION_ROLE.SUPER_ADMIN,
+    PERMISSION_ROLE.INTERN,
+  ),
   AdminController.getSingleData,
 );
 
