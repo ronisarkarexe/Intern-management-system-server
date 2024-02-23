@@ -64,6 +64,11 @@ const deleteTask = async (id) => {
   await Task.deleteOne({ _id: id });
 };
 
+// const extendedDate = async (id, payload) => {
+//   const result = await Task.updateOne({ _id: id }, payload);
+//   return result;
+// };
+
 export const TaskService = {
   createTask,
   getAllTask,

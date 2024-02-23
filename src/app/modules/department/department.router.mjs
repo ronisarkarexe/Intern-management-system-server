@@ -12,7 +12,7 @@ router.post(
 
 router.get(
   '/',
-  auth(PERMISSION_ROLE.ADMIN, PERMISSION_ROLE.SUPER_ADMIN),
+  auth(PERMISSION_ROLE.ADMIN, PERMISSION_ROLE.SUPER_ADMIN, PERMISSION_ROLE.INTERN),
   DepartmentController.getAllData,
 );
 

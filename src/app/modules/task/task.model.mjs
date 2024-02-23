@@ -14,6 +14,11 @@ const taskSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    status: {
+      type: String,
+      enum: ['TODO', 'IN_PROGRESS', 'DONE'],
+      default: 'TODO',
+    },
     departmentId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Department',
@@ -23,6 +28,18 @@ const taskSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Intern',
       required: true,
+    },
+    isExtendDeadlineDate: {
+      type: Boolean,
+      default: false,
+    },
+    reason: {
+      type: String,
+      default: '',
+    },
+    extendedDate: {
+      type: String,
+      default: '',
     },
   },
   {
