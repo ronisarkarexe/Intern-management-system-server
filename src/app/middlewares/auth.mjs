@@ -21,17 +21,7 @@ const auth =
       req.user = verifyUser;
       next();
     } catch (error) {
-      if (
-        error.name === 'JsonWebTokenError' ||
-        error.name === 'TokenExpiredError'
-      ) {
-        throw new ApiError(
-          httpStatus.UNAUTHORIZED,
-          'Invalid or expired token.',
-        );
-      } else {
-        next(error);
-      }
+      next(error);
     }
   };
 

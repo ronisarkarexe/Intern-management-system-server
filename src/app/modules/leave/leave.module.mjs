@@ -4,7 +4,7 @@ const leaveSchema = mongoose.Schema(
   {
     reason: {
       type: String,
-      required: true
+      required: true,
     },
     startDate: {
       type: String,
@@ -18,6 +18,7 @@ const leaveSchema = mongoose.Schema(
       type: String,
       required: true,
       enum: ['Pending', 'Approved', 'Rejected'],
+      default: 'Pending',
     },
     appliedDate: {
       type: String,

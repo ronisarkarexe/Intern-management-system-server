@@ -15,7 +15,9 @@ const getAllLeave = async (options) => {
   const result = await Leave.find({})
     .sort(sortCondition)
     .skip(skip)
-    .limit(limit);
+    .limit(limit)
+    .populate('internId')
+    .populate('departmentId');
   const total = await Leave.countDocuments({});
   return {
     meta: {
@@ -46,5 +48,5 @@ export const LeaveService = {
   getAllLeave,
   getSingleLeave,
   updateLeave,
-  deleteLeave
+  deleteLeave,
 };

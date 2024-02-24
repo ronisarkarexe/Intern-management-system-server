@@ -38,7 +38,9 @@ const getAllTask = async (options) => {
   const result = await Task.find({})
     .sort(sortCondition)
     .skip(skip)
-    .limit(limit);
+    .limit(limit)
+    .populate('internId')
+    .populate('departmentId');
   const total = await Task.countDocuments({});
   return {
     meta: {
@@ -63,6 +65,11 @@ const updateTask = async (id, payload) => {
 const deleteTask = async (id) => {
   await Task.deleteOne({ _id: id });
 };
+
+// const extendedDate = async (id, payload) => {
+//   const result = await Task.updateOne({ _id: id }, payload);
+//   return result;
+// };
 
 export const TaskService = {
   createTask,
