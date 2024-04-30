@@ -2,16 +2,16 @@
   "name": "intern-admin-collaboration-server",
   "version": "1.0.0",
   "description": "intern management",
-  "main": "server.js",
+  "main": "server.mjs",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.mjs",
     "dev": "nodemon src/server.mjs",
     "lint": "eslint --ignore-path .eslintignore --ext .mjs .",
     "lint-check": "eslint . --fix",
     "format": "prettier --ignore-path .gitignore --write . \"**/*.+(mjs|js|json)\"",
-    "prettier:check": "prettier --write .",
-    "prepare": "node .husky/install.mjs"
+    "prettier:check": "prettier --write ."
   },
   "lint-staged": {
     "src/**/*.ts": [

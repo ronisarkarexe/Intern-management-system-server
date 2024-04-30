@@ -1,5 +1,5 @@
 import paginationHelper from '../../../utils/paginationHelper.mjs';
-import { Certificate } from './Certificate.module.mjs';
+import { Certificate } from './certificate.module.mjs';
 
 const createCertificate = async (payload) => {
   const result = await Certificate.create(payload);
